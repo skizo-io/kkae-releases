@@ -31,7 +31,7 @@ curl -fsSL https://raw.githubusercontent.com/skizo-io/kkae-releases/main/install
 - **Show Panel** shows a small floating panel. Drag the dotted handle to move it; click the time/mode text to change mode. The handle does not respond to clicks.
 - **Quit** exits the app and releases its power requests.
 - **Show Tips** shows explanations below the settings in Korean, English or Japanese, following your Mac language. It is on by default.
-- **Contact** opens the SBOX inquiry form. Nothing is sent until you press Send.
+- **Contact** (문의하기 / お問い合わせ, following your Mac language) opens the SBOX inquiry form. The window title follows the same language. Nothing is sent until you press Send.
 
 Kkae prevents idle system sleep, with display prevention optional. It does **not** bypass lid-close sleep, manual sleep or battery safety limits. Display prevention can affect display-triggered locking: lock your screen yourself when leaving the Mac, and follow your employer's policies.
 
