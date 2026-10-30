@@ -6,6 +6,8 @@ A small macOS menu-bar utility that keeps your Mac awake while you work.
 
 ## Install with one command
 
+If Kkae is running, choose **Quit** from its menu before running the installer. Your saved settings are kept.
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/skizo-io/kkae-releases/main/install.sh | bash
 ```
@@ -13,6 +15,8 @@ curl -fsSL https://raw.githubusercontent.com/skizo-io/kkae-releases/main/install
 The installer checks the pinned SHA-256, Developer ID signature and Gatekeeper before installing into `~/Applications/Kkae.app`. No administrator password or developer tools are required. It never disables Gatekeeper, clears quarantine or deletes your preferences. Existing Kkae installations are backed up before replacement.
 
 Prefer a disk image? Download the DMG from [Releases](https://github.com/skizo-io/kkae-releases/releases/latest), open it, and drag Kkae into Applications. Do not install both copies.
+
+Choose `Kkae-<version>.dmg` or use the command above. GitHub's automatic **Source code** archives contain only this public repository's installation script and guide, not the private Kkae application source.
 
 To verify the download without installing or launching:
 
