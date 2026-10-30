@@ -6,8 +6,8 @@ export PATH='/usr/bin:/bin:/usr/sbin:/sbin'
 [[ $(sw_vers -productVersion | cut -d. -f1) -ge 13 ]] || { echo 'Kkae requires macOS 13 or newer.' >&2; exit 1; }
 [[ $(id -u) -ne 0 ]] || { echo 'Run this as your user, not with sudo.' >&2; exit 1; }
 case "${1:-}" in ''|--check) ;; *) echo 'Usage: bash install.sh [--check]' >&2; exit 2 ;; esac
-version='0.5.1'
-expected='857cedd795795a75fee3c2468b2cdc5f6619a6b118b5157e0c71130fde06cd2b'
+version='0.5.2'
+expected='78382a4145b97378feedf23ede960d592e862a2da6def644abde372488761ffa'
 work=$(mktemp -d "${TMPDIR:-/tmp}/kkae-download.XXXXXX")
 cleanup() {
   case "$work" in

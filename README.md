@@ -16,6 +16,21 @@ The installer checks the pinned SHA-256, Developer ID signature and Gatekeeper b
 
 Prefer a disk image? Download the DMG from [Releases](https://github.com/skizo-io/kkae-releases/releases/latest), open it, and drag Kkae into Applications. Do not install both copies.
 
+## AI mode
+
+The bar and panel cycle through **Off → AI → Timer → Always**. AI mode keeps the Mac awake while a connected local agent is working and releases sleep prevention when its work ends. Opening an AI app alone is not treated as activity.
+
+Connect the agent's lifecycle hooks once for the project you use. The following commands print a configuration fragment; they do not install or overwrite anything:
+
+```bash
+~/Applications/Kkae.app/Contents/MacOS/Kkae --agent-hooks --source codex
+~/Applications/Kkae.app/Contents/MacOS/Kkae --agent-hooks --source claude
+```
+
+Use the first fragment in your project's `.codex/hooks.json`, or the second in `.claude/settings.local.json`. Merge with existing hooks rather than replacing them. In Codex, trust your project and review the new hooks with `/hooks`. Use `/Applications/Kkae.app` instead if that is where you installed it.
+
+Local Codex CLI start/end delivery is verified. Claude Code support is implemented from its documented hooks; real Claude CLI/Desktop Code testing is pending. General Claude Chat, Cowork, cloud and SSH jobs are not covered. Missing completion information can show **AI · Waiting**; you can always choose Off. A lost completion signal cannot keep a registered job active beyond 12 hours.
+
 Choose `Kkae-<version>.dmg` or use the command above. GitHub's automatic **Source code** archives contain only this public repository's installation script and guide, not the private Kkae application source.
 
 To verify the download without installing or launching:
@@ -45,7 +60,9 @@ Quit Kkae and run the same install command again. Previous command-installed app
 
 ## Privacy and source
 
-No accounts, ads, automatic analytics, telemetry or background reporting. Preferences stay on your Mac. The installer downloads from GitHub and macOS may contact Apple to verify software trust. The SBOX button opens a website in your browser only when clicked.
+No accounts, ads or analytics SDK. Preferences stay on your Mac. The production app sends a minimal daily usage signal (service, platform, release channel and UTC date) through SBOX to Google Analytics. Input, installation identifiers, timer settings, AI task status and inquiry content are not included.
+
+SBOX relays the signal through its existing Supabase service in Singapore to Google Analytics. A fresh request label is generated on the server, not stored separately or linked to a person or installation. The figures are received usage signals, not exact user or installation counts. Network providers may process connection/security logs; the app does not forward the incoming IP or User-Agent to Analytics. Google processes the event under the project's Analytics settings. The installer downloads from GitHub and macOS may contact Apple to verify software trust. The SBOX button opens a website only when clicked.
 
 If you choose Contact and Send, SBOX receives your message, optional email, service/app version and build, platform, language and a random receipt ID. Do not include passwords or private files. Inquiry processing uses the existing SBOX Supabase project in Singapore. The inquiry database stores an HMAC of the connection IP for abuse prevention, not the raw IP; infrastructure providers may process connection logs under their own terms. The retention target is 60 days; cleanup is manual, not automatic, so records may remain beyond 60 days until removed. To request deletion, contact skizo80@gmail.com. Message/email fields remain only in memory in the app until successful submission or quitting; they are not sent as logs.
 
