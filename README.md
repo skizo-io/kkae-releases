@@ -16,20 +16,9 @@ The installer checks the pinned SHA-256, Developer ID signature and Gatekeeper b
 
 Prefer a disk image? Download the DMG from [Releases](https://github.com/skizo-io/kkae-releases/releases/latest), open it, and drag Kkae into Applications. Do not install both copies.
 
-## AI mode
+## Sleep prevention
 
-The bar and panel cycle through **Off → AI → Timer → Always**. AI mode keeps the Mac awake while a connected local agent is working and releases sleep prevention when its work ends. Opening an AI app alone is not treated as activity.
-
-Connect the agent's lifecycle hooks once for the project you use. The following commands print a configuration fragment; they do not install or overwrite anything:
-
-```bash
-~/Applications/Kkae.app/Contents/MacOS/Kkae --agent-hooks --source codex
-~/Applications/Kkae.app/Contents/MacOS/Kkae --agent-hooks --source claude
-```
-
-Use the first fragment in your project's `.codex/hooks.json`, or the second in `.claude/settings.local.json`. Merge with existing hooks rather than replacing them. In Codex, trust your project and review the new hooks with `/hooks`. Use `/Applications/Kkae.app` instead if that is where you installed it.
-
-Local Codex CLI start/end delivery is verified. Claude Code support is implemented from its documented hooks; real Claude CLI/Desktop Code testing is pending. General Claude Chat, Cowork, cloud and SSH jobs are not covered. Missing completion information can show **AI · Waiting**; you can always choose Off. A lost completion signal cannot keep a registered job active beyond 12 hours.
+Choose a timer from five minutes to twelve hours, or use Always. Turn Keep Display On off to let the display sleep while your Mac continues working. Choose Off to stop sleep prevention.
 
 Choose `Kkae-<version>.dmg` or use the command above. GitHub's automatic **Source code** archives contain only this public repository's installation script and guide, not the private Kkae application source.
 
@@ -60,7 +49,7 @@ Quit Kkae and run the same install command again. Previous command-installed app
 
 ## Privacy and source
 
-Kkae is operated from Japan. No accounts, ads or analytics SDK. Preferences stay on your Mac. The production app creates and retains an app-specific random installation ID locally. On a day of use, it sends that ID, service, platform, production channel and UTC date at most once through SBOX Supabase in Singapore to Google Analytics. Input, timer settings, AI task status, inquiry content, account/device/advertising IDs are excluded. The ID is not joined with other apps or personal data.
+Kkae is operated from Japan. No accounts, ads or analytics SDK. Preferences stay on your Mac. The production app creates and retains an app-specific random installation ID locally. On a day of use, it sends that ID, service, platform, production channel and UTC date at most once through SBOX Supabase in Singapore to Google Analytics. Input, timer settings, task status, inquiry content, account/device/advertising IDs are excluded. The ID is not joined with other apps or personal data.
 
 Counts deduplicate repeated use of an installation for service operation and improvement; they are not exact people. Additional Google sharing is disabled and advertising use is denied. Original IP and User-Agent are not forwarded to Analytics; network providers may process ordinary connection/security logs. Retention/deletion follow Google Analytics settings and policies. Existing saved collection refusals are preserved; failed requests are not retried that day. Deleting the local ID does not immediately delete server data. For collection-stop or deletion requests, contact skizo80@gmail.com. The installer downloads from GitHub and macOS may contact Apple to verify software trust.
 
